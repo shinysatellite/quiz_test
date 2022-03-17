@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Answer extends Model
 {
-    protected $table = 'questions';
+    protected $table = 'answers';
 
-    protected $fillable = ['title'];
+    protected $fillable = ['question_id', 'text', 'value'];
 
     public function questions()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(Question::class, 'question_id');
     }
 }

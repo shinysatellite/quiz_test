@@ -2,7 +2,7 @@
   <div>
     <base-content-header
       category="Quiezz"
-      title="Questions and Answers"
+      title="Management"
     ></base-content-header>
     <div class="content">
       <base-block rounded title="Latest Orders" header-bg content-full>
@@ -61,28 +61,26 @@
                 </b-badge>
               </b-td>
               <b-td>
-                <AddButton :id="quiz.id" :active="quiz.active" />
+                <RemoveButton :id="quiz.id" />
               </b-td>
             </b-tr>
           </b-tbody>
         </b-table-simple>
       </base-block>
-      <CreateModal />
     </div>
   </div>
 </template>
 
 <script>
-import CreateModal from "@/views/components/admin/quizzes/CreateModal";
-import AddButton from "@/views/components/admin/quizzes/AddButton";
+import RemoveButton from "@/views/components/admin/quiz-management/RemoveButton";
 import { mapGetters } from "vuex";
 
 export default {
-  components: { CreateModal, AddButton },
+  components: { RemoveButton },
   data: () => ({}),
   computed: {
     ...mapGetters({
-      quizzes: "admin-quiz/quizzes"
+      quizzes: "admin-quiz/active_quizzes"
     })
   },
   mounted() {
@@ -94,7 +92,7 @@ export default {
     },
     getInitialData() {
       this.$store.dispatch("admin-quiz/getQuizTypes");
-      this.$store.dispatch("admin-quiz/getQuizLists");
+      this.$store.dispatch("admin-quiz/getQuizActiveLists");
     }
   }
 };

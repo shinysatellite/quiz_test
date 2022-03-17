@@ -26,6 +26,11 @@ const Quizzes = () =>
     /* webpackChunkName: "auth-signup3" */ "@/views/pages/admin/Quizzes.vue"
   );
 
+const QuizManagement = () =>
+  import(
+    /* webpackChunkName: "auth-signup3" */ "@/views/pages/admin/QuizManagement.vue"
+  );
+
 export default [
   {
     path: "/",
@@ -67,6 +72,14 @@ export default [
         path: "admin/quizzes",
         name: "Quizzes",
         component: Quizzes,
+        meta: {
+          adminOnly: true
+        }
+      },
+      {
+        path: "admin/quiz_manage",
+        name: "QuizManagement",
+        component: QuizManagement,
         meta: {
           adminOnly: true
         }

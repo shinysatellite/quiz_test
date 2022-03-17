@@ -16,28 +16,16 @@ export default {
       subActivePaths: "/admin",
       sub: [
         {
-          name: "Dashboard",
+          name: "Questions & Answers",
           to: "/admin/quizzes"
         },
         {
-          name: "Search",
-          to: "/backend-boxed/search"
+          name: "Active Quiz Management",
+          to: "/admin/quiz_manage"
         },
         {
-          name: "Simple 1",
-          to: "/backend-boxed/simple1"
-        },
-        {
-          name: "Simple 2",
-          to: "/backend-boxed/simple2"
-        },
-        {
-          name: "Image 1",
-          to: "/backend-boxed/image1"
-        },
-        {
-          name: "Image 2",
-          to: "/backend-boxed/image2"
+          name: "Test Result",
+          to: "/admin/result"
         }
       ]
     }

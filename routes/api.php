@@ -34,5 +34,9 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     });
     // Route::post('/sign-out', [AuthenticationController::class, 'logout']);
 
-    Route::post('/quiz_types', [QuizzesController::class, 'getQuizeType']);
+    Route::post('quiz_types', [QuizzesController::class, 'getQuizeType']);
+    Route::post('quiz/store', [QuizzesController::class, 'store']);
+    Route::post('quiz/lists', [QuizzesController::class, 'getLists']);
+    Route::post('quiz/activeQuiz', [QuizzesController::class, 'activeQuiz']);
+    Route::post('quiz/active_lists', [QuizzesController::class, 'getActiveLists']);
 });

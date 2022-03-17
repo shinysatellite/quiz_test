@@ -18,7 +18,8 @@ class CreateQuestionsTable extends Migration
             $table->unsignedBigInteger('type_id');
             $table->foreign('type_id')->references('id')->on('types');
             $table->string('text');
-            $table->unsignedInteger('limit_time');
+            $table->unsignedInteger('limit_time')->nullable();
+            $table->boolean('active')->default(false);
             $table->timestamps();
         });
     }
