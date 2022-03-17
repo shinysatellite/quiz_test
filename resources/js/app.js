@@ -21,21 +21,11 @@ import BaseBlock from "@/components/BaseBlock";
 import BaseBackground from "@/components/BaseBackground";
 import BasePageHeading from "@/components/BasePageHeading";
 import BaseNavigation from "@/components/BaseNavigation";
+import BaseContentHeader from "@/components/BaseContentHeader";
 
 // Custom directives
 import clickRipple from "@/directives/clickRipple";
 import toggleClass from "@/directives/toggleClass";
-
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 // Register global components
 Vue.component(BaseLayoutModifier.name, BaseLayoutModifier);
@@ -43,15 +33,10 @@ Vue.component(BaseBlock.name, BaseBlock);
 Vue.component(BaseBackground.name, BaseBackground);
 Vue.component(BasePageHeading.name, BasePageHeading);
 Vue.component(BaseNavigation.name, BaseNavigation);
+Vue.component(BaseContentHeader.name, BaseContentHeader);
 
 // Register global plugins
 Vue.use(BootstrapVue);
-// Vue.component(
-//     "example-component",
-//     require("./components/ExampleComponent.vue").default
-// );
-
-// Register global directives
 Vue.directive("click-ripple", clickRipple);
 Vue.directive("toggle-class", toggleClass);
 

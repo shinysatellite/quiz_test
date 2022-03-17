@@ -11,15 +11,6 @@ const Dashboard = () =>
     /* webpackChunkName: "pages-dashboard", webpackPrefetch: true */ "@/views/Dashboard.vue"
   );
 
-// Pages: Various
-const PagesVariousMaintenance = () =>
-  import("@/views/pages/various/Maintenance.vue");
-const PagesVariousStatus = () => import("@/views/pages/various/Status.vue");
-const PagesVariousComingSoon = () =>
-  import(
-    /* webpackChunkName: "various-coming-soon" */ "@/views/pages/various/ComingSoon.vue"
-  );
-
 // Pages: Auth
 const AuthSignIn = () =>
   import(
@@ -29,9 +20,10 @@ const AuthSignUp = () =>
   import(
     /* webpackChunkName: "auth-signup3" */ "@/views/pages/auth/SignUp.vue"
   );
-const AuthReminder = () =>
+
+const Quizzes = () =>
   import(
-    /* webpackChunkName: "auth-reminder3" */ "@/views/pages/auth/Reminder.vue"
+    /* webpackChunkName: "auth-signup3" */ "@/views/pages/admin/Quizzes.vue"
   );
 
 export default [
@@ -56,43 +48,25 @@ export default [
         path: "register",
         name: "register",
         component: AuthSignUp
-      },
-      {
-        path: "maintenance",
-        name: "Pages Various Maintenance",
-        component: PagesVariousMaintenance
-      },
-      {
-        path: "status",
-        name: "Pages Various Statuc",
-        component: PagesVariousStatus
-      },
-      {
-        path: "coming-soon",
-        name: "Pages Various Coming Soon",
-        component: PagesVariousComingSoon
-      },
-      {
-        path: "forgotten-password",
-        name: "AuthReminder",
-        component: AuthReminder
       }
     ]
   },
   {
-    path: "/",
+    path: "/admin",
     component: LayoutBackend,
     meta: {
-      authOnly: true
+      activeOnly: true
     },
     children: [
       {
-        path: "dashboard",
+        path: "/",
         name: "Dashboard",
-        component: Dashboard,
-        meta: {
-          activeOnly: true
-        }
+        component: Dashboard
+      },
+      {
+        path: "quizzes",
+        name: "Quizzes",
+        component: Quizzes
       }
     ]
   }
