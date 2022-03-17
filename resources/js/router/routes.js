@@ -52,21 +52,24 @@ export default [
     ]
   },
   {
-    path: "/admin",
+    path: "/",
     component: LayoutBackend,
     meta: {
       activeOnly: true
     },
     children: [
       {
-        path: "/",
+        path: "admin",
         name: "Dashboard",
         component: Dashboard
       },
       {
-        path: "quizzes",
+        path: "admin/quizzes",
         name: "Quizzes",
-        component: Quizzes
+        component: Quizzes,
+        meta: {
+          adminOnly: true
+        }
       }
     ]
   }

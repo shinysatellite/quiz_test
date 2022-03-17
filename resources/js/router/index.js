@@ -35,11 +35,13 @@ function createRouter() {
 
 const isLoggedIn = () => {
   if (store.getters["auth/token"]) {
+    console.log(store.getters["auth/token"]);
     if (!store.getters["auth/check"]) {
       store.dispatch("auth/fetchUser");
     }
     return true;
   } else {
+    console.log(store.getters["auth/token"]);
     return false;
   }
 };
@@ -59,60 +61,22 @@ const isActive = () => {
  * @param {Function} next
  */
 async function beforeEach(to, from, next) {
-  if (to.fullPath == "/") {
-    if (!isLoggedIn()) {
+  if (!isLoggedIn()) {
+    if (to.fullPath == "/") {
       next({
         path: "/login"
       });
     } else {
-      next({
-        path: "/dashboard"
-      });
+      next();
     }
-  }
-  if (to.matched.some(record => record.meta.authOnly)) {
-    // this route requires auth, check if logged in
-    // if not, redirect to login page.
-    if (!isLoggedIn()) {
-      next({
-        path: "/login"
-      });
-    } else {
-      if (store.getters["auth/type"] == "merchant") {
-        if (to.matched.some(record => record.meta.activeOnly)) {
-          if (store.getters["auth/active"]) {
-            next();
-          } else {
-            alertMessage("error", "Please check your card");
-            next({
-              path: "/subscription-settings"
-            });
-          }
-        } else {
-          next();
-        }
-      } else {
-        if (to.name == "SubscriptionSettings") {
-          next({
-            path: "/dashboard"
-          });
-        } else {
-          next();
-        }
-      }
-    }
-  } else if (to.matched.some(record => record.meta.guestOnly)) {
-    // this route requires auth, check if logged in
-    // if not, redirect to login page.
-    if (isLoggedIn()) {
+  } else {
+    if (to.fullPath == "/") {
       next({
         path: "/dashboard"
       });
     } else {
       next();
     }
-  } else {
-    next(); // make sure to always call next()!
   }
 }
 

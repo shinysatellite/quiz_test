@@ -141,9 +141,17 @@ export default {
       }
     ]
   }),
+  mounted() {
+    this.getInitialData();
+  },
   methods: {
     newQuiz() {
       this.$bvModal.show("create_quiz_modal");
+    },
+    getInitialData() {
+      this.$store.dispatch("admin-quiz/getQuizTypes").then(res => {
+        console.log(res);
+      });
     }
   }
 };

@@ -40,7 +40,6 @@ class UserController extends Controller
         ];
         return response()->json($response);
     }
-
     /**
      * Login
      */
@@ -52,20 +51,18 @@ class UserController extends Controller
         ];
 
         if (Auth::attempt($credentials, true)) {
-            $success = true;
-            $message = 'User login successfully';
+            $response = [
+                'success' => true,
+                'message' => 'User login successfully',
+                'token' => auth()->user()->createToken('tokens')->plainTextToken,
+                'user' => auth()->user(),
+            ];
         } else {
-            $success = false;
-            $message = 'Unauthorised';
+            $response = [
+                'success' => false,
+                'message' => 'Unauthorised',
+            ];
         }
-
-        // response
-        $response = [
-            'success' => $success,
-            'message' => $message,
-            'token' => auth()->user()->createToken('tokens')->plainTextToken,
-            'user' => auth()->user(),
-        ];
         return response()->json($response);
     }
 

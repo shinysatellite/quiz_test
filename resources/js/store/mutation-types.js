@@ -17,3 +17,5 @@ export const setLayout = "setLayout";
 
 // lang.js
 export const SET_LOCALE = "SET_LOCALE";
+
+export const SAVE_TYPES = "SAVE_TYPES";

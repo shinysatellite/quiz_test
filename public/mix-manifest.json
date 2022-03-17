@@ -1,9 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
     "/js/pages-dashboard.js": "/js/pages-dashboard.js?id=26822db6403c8bfac870",
-    "/js/various-coming-soon.js": "/js/various-coming-soon.js?id=d3f07ba7604744dffb23",
-    "/js/auth-signin3.js": "/js/auth-signin3.js?id=0f129663e1a42a0a738c",
-    "/js/auth-signup3.js": "/js/auth-signup3.js?id=d7f2619c26516c2dbdda",
-    "/js/auth-reminder3.js": "/js/auth-reminder3.js?id=88510936ac0bbaa836b9",
+    "/js/auth-signin3.js": "/js/auth-signin3.js?id=02021bc2f5a28895c1dd",
+    "/js/auth-signup3.js": "/js/auth-signup3.js?id=e50d29247864ac0627a3",
     "/css/main.css": "/css/main.css"
 }

@@ -15,6 +15,8 @@ require("./service/axios.service");
 
 // Bootstrap Vue
 import BootstrapVue from "bootstrap-vue";
+import VueSweetalert2 from "vue-sweetalert2";
+
 // Custom components
 import BaseLayoutModifier from "@/components/BaseLayoutModifier";
 import BaseBlock from "@/components/BaseBlock";
@@ -34,6 +36,16 @@ Vue.component(BaseBackground.name, BaseBackground);
 Vue.component(BasePageHeading.name, BasePageHeading);
 Vue.component(BaseNavigation.name, BaseNavigation);
 Vue.component(BaseContentHeader.name, BaseContentHeader);
+
+const options = {
+  buttonsStyling: false,
+  customClass: {
+    confirmButton: "btn btn-success m-1",
+    cancelButton: "btn btn-danger m-1",
+    input: "form-control"
+  }
+};
+Vue.use(VueSweetalert2, options);
 
 // Register global plugins
 Vue.use(BootstrapVue);

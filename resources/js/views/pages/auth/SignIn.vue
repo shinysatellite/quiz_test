@@ -198,7 +198,11 @@ export default {
       }
 
       this.$store.dispatch("auth/signin", this.form).then(res => {
-        this.$router.push({ name: "Dashboard" });
+        if (res) {
+          this.$router.push({ name: "Dashboard" });
+        } else {
+          this.$swal("", "Your credentials do not match our records", "error");
+        }
       });
     }
   }

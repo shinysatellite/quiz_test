@@ -51,6 +51,19 @@ export const actions = {
     commit(types.SAVE_TOKEN, payload);
   },
 
+  async signup({ commit }, payload) {
+    try {
+      await Csrf.getCookie();
+      const { data } = await axios.post("/register-email", payload);
+      if (data?.success) {
+        return true;
+      }
+      return false;
+    } catch (e) {
+      commit(types.FETCH_USER_FAILURE);
+    }
+  },
+
   async register({ commit }, payload) {
     try {
       await Csrf.getCookie();
@@ -104,6 +117,24 @@ export const actions = {
     try {
       const { data } = await axios.post("/logout");
       if (data.success) commit(types.FETCH_USER_FAILURE);
+    } catch (e) {
+      commit(types.FETCH_USER_FAILURE);
+    }
+  },
+  async resetPasswordLink({ commit }, payload) {
+    try {
+      await Csrf.getCookie();
+      const { data } = await axios.post("/reset-password", payload);
+      return data;
+    } catch (e) {
+      commit(types.FETCH_USER_FAILURE);
+    }
+  },
+  async resetPassword({ commit }, payload) {
+    try {
+      await Csrf.getCookie();
+      const { data } = await axios.post("/reset/password", payload);
+      return data;
     } catch (e) {
       commit(types.FETCH_USER_FAILURE);
     }

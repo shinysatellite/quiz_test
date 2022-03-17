@@ -212,7 +212,7 @@ export default {
       if (this.$v.form.$anyError) {
         return;
       }
-      this.$store.dispatch("auth/signup", this.form).then(res => {
+      this.$store.dispatch("auth/register", this.form).then(res => {
         this.$router.push({ name: "Dashboard" });
       });
     }

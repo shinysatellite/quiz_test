@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 //import controller
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\QuizzesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,4 +33,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         return auth()->user();
     });
     // Route::post('/sign-out', [AuthenticationController::class, 'logout']);
+
+    Route::post('/quiz_types', [QuizzesController::class, 'getQuizeType']);
 });
