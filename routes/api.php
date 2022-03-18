@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 //import controller
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\QuizzesController;
+use App\Http\Controllers\Api\ResultsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,4 +40,5 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('quiz/lists', [QuizzesController::class, 'getLists']);
     Route::post('quiz/activeQuiz', [QuizzesController::class, 'activeQuiz']);
     Route::post('quiz/active_lists', [QuizzesController::class, 'getActiveLists']);
+    Route::post('quiz/save_test', [ResultsController::class, 'saveTest']);
 });

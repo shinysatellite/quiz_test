@@ -64,5 +64,18 @@ export const actions = {
     } catch (e) {
       console.error(e);
     }
+  },
+  async saveTest({ commit }, payload) {
+    try {
+      const { data } = await axios.post("/quiz/save_test", payload);
+      if (data?.success) {
+        // commit(types.SAVE_QUIZ_ACITVE_LIST, { quizzes: data.quizzes });
+        console.log(data);
+        return true;
+      }
+      return false;
+    } catch (e) {
+      console.error(e);
+    }
   }
 };

@@ -25,7 +25,6 @@
         </b-form-group>
       </div>
       <div v-else>
-        {{ quizzes[current].answers }}
         <b-form-group label="Answers" v-slot="{ ariaDescribedby }">
           <b-form-radio
             v-model="answer"
@@ -100,7 +99,8 @@ export default {
   }),
   computed: {
     ...mapGetters({
-      quizzes: "admin-quiz/active_quizzes"
+      quizzes: "admin-quiz/active_quizzes",
+      user: "auth/user"
     }),
     count() {
       if (this.quizzes) {
@@ -141,11 +141,14 @@ export default {
       }
       this.result = {
         count: this.count,
-        total_score: total_score,
+        score: (total_score * 1) / this.count,
         unanswered_count: unanswered_count,
         take_time: this.total_time * 1 - this.finish_time * 1
       };
       this.$bvModal.show("result_modal");
+
+      const sendingData = { ...this.result, id: this.user.id };
+      this.$store.dispatch("admin-quiz/saveTest", sendingData);
     },
     next() {
       const correct = this.quizzes[this.current].correct_answer;

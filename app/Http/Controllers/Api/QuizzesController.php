@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Type;
 use App\Models\Question;
 use App\Models\Answer;
+use App\Models\Result;
+use App\Models\User;
 
 class QuizzesController extends Controller
 {
