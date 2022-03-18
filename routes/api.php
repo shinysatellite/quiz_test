@@ -40,5 +40,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('quiz/lists', [QuizzesController::class, 'getLists']);
     Route::post('quiz/activeQuiz', [QuizzesController::class, 'activeQuiz']);
     Route::post('quiz/active_lists', [QuizzesController::class, 'getActiveLists']);
+
     Route::post('quiz/save_test', [ResultsController::class, 'saveTest']);
+    Route::post('result/get_result_list', [ResultsController::class, 'getResultLists']);
 });

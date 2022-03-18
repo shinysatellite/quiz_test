@@ -31,4 +31,13 @@ class ResultsController extends Controller
             'success' => $success,
         ]);
     }
+
+    public function getResultLists() {
+        $results = Result::with('user')->orderBy('score')->get();
+        
+        return response()->json([
+            'success'=> true,
+            'results' => $results
+        ]);
+    }
 }

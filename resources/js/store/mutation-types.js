@@ -21,3 +21,4 @@ export const SET_LOCALE = "SET_LOCALE";
 export const SAVE_TYPES = "SAVE_TYPES";
 export const SAVE_QUIZ_LIST = "SAVE_QUIZ_LIST";
 export const SAVE_QUIZ_ACITVE_LIST = "SAVE_QUIZ_ACITVE_LIST";
+export const SAVE_RESULTS = "SAVE_RESULTS";
