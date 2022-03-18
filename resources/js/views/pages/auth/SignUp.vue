@@ -167,6 +167,7 @@
 // Vuelidate, for more info and examples you can check out https://github.com/vuelidate/vuelidate
 import { validationMixin } from "vuelidate";
 import { required, minLength, email, sameAs } from "vuelidate/lib/validators";
+import { mapGetters } from "vuex";
 
 export default {
   middleware: "guest",
@@ -205,6 +206,11 @@ export default {
       }
     }
   },
+  computed: {
+    ...mapGetters({
+      user: "auth/user"
+    })
+  },
   methods: {
     onSubmit() {
       this.$v.form.$touch();
@@ -213,7 +219,11 @@ export default {
         return;
       }
       this.$store.dispatch("auth/register", this.form).then(res => {
-        this.$router.push({ name: "Dashboard" });
+        if (this.user.type == "admin") {
+          this.$router.push({ name: "Quizzes" });
+        } else {
+          this.$router.push({ name: "Home" });
+        }
       });
     }
   }

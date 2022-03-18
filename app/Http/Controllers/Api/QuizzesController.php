@@ -61,7 +61,7 @@ class QuizzesController extends Controller
     }
 
     public function getActiveLists() {
-        $questions = Question::where('active', 1)->get();
+        $questions = Question::where('active', 1)->with('answers')->get();
 
         return response()->json([
             'success'=> true,

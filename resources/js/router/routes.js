@@ -1,6 +1,7 @@
 // Main layouts
 import LayoutBackend from "@/layouts/variations/Backend.vue";
 import LayoutSimple from "@/layouts/variations/Simple.vue";
+import LayoutFrontend from "@/layouts/variations/Frontend.vue";
 
 // Frontend: Landing
 const Landing = () => import("@/views/Landing.vue");
@@ -31,6 +32,11 @@ const QuizManagement = () =>
     /* webpackChunkName: "auth-signup3" */ "@/views/pages/admin/QuizManagement.vue"
   );
 
+const Test = () =>
+  import(
+    /* webpackChunkName: "auth-signup3" */ "@/views/pages/candidate/Test.vue"
+  );
+
 export default [
   {
     path: "/",
@@ -39,11 +45,6 @@ export default [
       guestOnly: true
     },
     children: [
-      {
-        path: "/",
-        name: "Home",
-        component: Landing
-      },
       {
         path: "login",
         name: "login",
@@ -58,16 +59,30 @@ export default [
   },
   {
     path: "/",
-    component: LayoutBackend,
+    component: LayoutFrontend,
     meta: {
       activeOnly: true
     },
     children: [
       {
-        path: "admin",
-        name: "Dashboard",
-        component: Dashboard
+        path: "/welcome",
+        name: "Home",
+        component: Landing
       },
+      {
+        path: "/test",
+        name: "Test",
+        component: Test
+      }
+    ]
+  },
+  {
+    path: "/",
+    component: LayoutBackend,
+    meta: {
+      activeOnly: true
+    },
+    children: [
       {
         path: "admin/quizzes",
         name: "Quizzes",

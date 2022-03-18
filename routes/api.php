@@ -19,7 +19,7 @@ use App\Http\Controllers\Api\QuizzesController;
 */
 
 //register new user
-Route::post('/signup', [UserController::class, 'register']);
+Route::post('/register', [UserController::class, 'register']);
 //login user
 Route::post('/signin', [UserController::class, 'login']);
 // Fetch User

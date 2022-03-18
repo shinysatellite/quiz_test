@@ -71,7 +71,7 @@
               </h1>
               <h2 class="font-size-base text-muted mb-3">
                 Welcome, please login or
-                <router-link to="/auth/signup">sign up</router-link> for a new
+                <router-link to="/register">sign up</router-link> for a new
                 account.
               </h2>
             </div>
@@ -166,6 +166,7 @@
 // Vuelidate, for more info and examples you can check out https://github.com/vuelidate/vuelidate
 import { validationMixin } from "vuelidate";
 import { required, minLength } from "vuelidate/lib/validators";
+import { mapGetters } from "vuex";
 
 export default {
   mixins: [validationMixin],
@@ -189,6 +190,12 @@ export default {
       }
     }
   },
+  computed: {
+    ...mapGetters({
+      user: "auth/user"
+    })
+  },
+
   methods: {
     onSubmit() {
       this.$v.form.$touch();
@@ -199,7 +206,12 @@ export default {
 
       this.$store.dispatch("auth/signin", this.form).then(res => {
         if (res) {
-          this.$router.push({ name: "Dashboard" });
+          console.log("user", this.user);
+          if (this.user.type == "admin") {
+            this.$router.push({ name: "Quizzes" });
+          } else {
+            this.$router.push({ name: "Home" });
+          }
         } else {
           this.$swal("", "Your credentials do not match our records", "error");
         }
